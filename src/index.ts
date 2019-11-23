@@ -1,6 +1,10 @@
 import app from './app'
+import { startConnection } from './datebase'
 
-app.listen(4000, () => {
-    console.log('Server on port', 4000)
-    
-});
+async function main(){
+    startConnection();
+    await app.listen(app.get('port'));
+    console.log('Serer on port', app.get('port'));
+}
+
+main();
