@@ -4,6 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
-app_1.default.listen(3000, () => {
-    console.log('Server on port', 3000);
-});
+const datebase_1 = require("./datebase");
+async function main() {
+    datebase_1.startConnection();
+    await app_1.default.listen(app_1.default.get('port'));
+    console.log('Serer on port', app_1.default.get('port'));
+}
+main();
